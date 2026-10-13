@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthew Weinberger — Engineering Portfolio</title>
+<meta name="description" content="Electrical engineering student at UW–Madison building LED power electronics, optics, 3D-printer hardware and 3D capture pipelines.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --fg:#16181d; --muted:#5b616e; --line:#e4e6ea; --card:#f6f7f9;
+  --accent:#c8102e; --accent-soft:#fbe9ec; --link:#1d4ed8;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0f1115; --fg:#e8eaee; --muted:#9aa1ad; --line:#252932; --card:#171a20;
+    --accent:#ff4d63; --accent-soft:#2a1519; --link:#7aa2ff; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);z-index:5}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
+header.top b{font-weight:700;letter-spacing:-.01em}
+nav a{color:var(--muted);font-size:14px;margin-left:18px} nav a:hover{color:var(--fg);text-decoration:none}
+@media (max-width:640px){nav{display:none}}
+.hero{padding:72px 0 40px;border-bottom:3px solid var(--accent)}
+.hero h1{font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.035em;margin:0 0 18px;font-weight:800}
+.hero p.lede{font-size:19px;color:var(--muted);max-width:720px;margin:0 0 24px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.chip.win{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);font-weight:600}
+.btns{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;padding:9px 16px;border-radius:8px;font-weight:600;font-size:14px;border:1px solid var(--line);color:var(--fg)}
+.btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn:hover{text-decoration:none;opacity:.88}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+h2.kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 28px;font-weight:700}
+.strengths{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.strengths div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.strengths b{display:block;margin-bottom:4px}
+.strengths span{color:var(--muted);font-size:14px}
+article.project{margin:0 0 64px}
+article.project:last-child{margin-bottom:0}
+.project h3{font-size:clamp(22px,3.4vw,30px);letter-spacing:-.02em;line-height:1.2;margin:0 0 6px;font-weight:750}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:6px;margin:0 6px 12px 0;background:var(--card);border:1px solid var(--line);color:var(--muted)}
+.tag.win{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.tag.pend{color:#b7791f;border-color:#e8c27a}
+.project p{margin:0 0 14px;max-width:780px}
+figure{margin:20px 0 24px}
+figure img{width:100%;display:block;border-radius:10px;border:1px solid var(--line);background:var(--card)}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pair{margin:20px 0}
+.pair img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:20px 0}
+.stats div{background:var(--bg);padding:14px 16px}
+.stats b{display:block;font-size:22px;letter-spacing:-.02em}
+.stats span{font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:16px 0 20px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td:first-child{font-weight:600;width:36%}
+.tablewrap{overflow-x:auto}
+ul.points{padding-left:20px;margin:0 0 16px;max-width:780px} ul.points li{margin-bottom:6px}
+.links{font-size:14px;display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:6px}
+.links a::after{content:" ↗"}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px}
+.small-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.small-grid div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.small-grid h4{margin:0 0 6px;font-size:17px}
+.small-grid p{margin:0 0 8px;font-size:14.5px}
+.small-grid .mono{color:var(--muted)}
+.awards li{margin-bottom:10px}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <b>Matthew Weinberger</b>
+  <nav><a href="#projects">Projects</a><a href="#imaging">Imaging</a><a href="#more">More</a><a href="#recognition">Recognition</a></nav>
+</div></header>
+
+<main class="wrap">
+
+<div class="hero">
+  <h1>Engineering Portfolio</h1>
+  <p class="lede">Electrical engineering student at the University of Wisconsin–Madison (Class of 2029) who designs, builds and ships hardware: LED power electronics, optics, mechanical assemblies used in an open-source 3D printer, and camera-based 3D capture pipelines.</p>
+  <div class="chips">
+    <span class="chip win">2× 1st place · BudgetLightForum Old Lumens</span>
+    <span class="chip">Designs shipping in the VzBoT kit</span>
+    <span class="chip">UW–Madison EE ’29</span>
+  </div>
+  <div class="btns">
+    <a class="btn primary" href="https://github.com/ruckusmattster">GitHub</a>
+    <a class="btn" href="#projects">See projects</a>
+  </div>
+</div>
+
+<section>
+  <h2 class="kicker">Core strengths</h2>
+  <div class="strengths">
+    <div><b>Power &amp; LED electronics</b><span>Constant-current drivers, dimming, thermal design</span></div>
+    <div><b>Mechanical design</b><span>Parametric Onshape models; laser-cut, 3D-printed and machined parts</span></div>
+    <div><b>Hands-on fabrication</b><span>Fine-pitch SMD, QFN and reflow soldering; machine-shop work</span></div>
+    <div><b>Measurement</b><span>Photometric characterization to ANSI FL1; data in Excel and Python</span></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="kicker">Featured projects</h2>
+
+  <article class="project">
+    <h3>VzBoT AWD CoreXY 3D printer — homing system &amp; toolhead assemblies</h3>
+    <span class="tag">2021 – present</span><span class="tag">Shipping in official kit</span>
+    <p>My homing system and toolhead designs ship in the official VzBoT kit and release, used by builders of this open-source high-speed printer (rated to 2,000 mm/s and 65,000 mm/s²).</p>
+    <ul class="points">
+      <li>Joined the project in its early stages (around 2021) and still contribute</li>
+      <li>Designed the homing system and toolhead assemblies used in the release; paid for contract design work on a freelance basis</li>
+      <li>Built the official printer-serialization program, registering 400+ verified builds across a 10,000-member community</li>
+      <li>One of five moderators: reviewed 20+ community design contributions and provided build support</li>
+    </ul>
+    <figure><img src="img/vzbot.jpg" alt="VzBoT AWD gantry and toolhead render" loading="lazy">
+      <figcaption>VzBoT AWD gantry and toolhead as shipped in the official kit (render: VzBoT documentation).</figcaption></figure>
+    <div class="links"><a href="https://vzbot.org">vzbot.org</a></div>
+  </article>
+
+  <article class="project">
+    <h3>Flicker-free, four-decade LED driver for stage fixtures</h3>
+    <span class="tag pend">Designed · build pending</span><span class="tag">KiCad 9</span><span class="tag">STM32G431</span><span class="tag">ESPHome</span>
+    <p>A two-board driver for four 5,000 lm Xicato XTM stage fixtures that keeps the LED on pure DC from 1.4 A down to 5 µA (0.0004% of full output). Fades run smoothly to black, and there is no PWM for a 240 fps phone camera to turn into bands.</p>
+    <figure><img src="img/xtm.jpg" alt="3D renders of the driver board and controller board" loading="lazy">
+      <figcaption>Board A (driver, 4-layer, 206 parts) and Board B (controller, 42 parts), rendered from KiCad.</figcaption></figure>
+    <div class="stats">
+      <div><b>5 µA–1.4 A</b><span>DC at every level</span></div>
+      <div><b>&lt;1%</b><span>flicker target, 100 Hz–20 kHz</span></div>
+      <div><b>0 / 0</b><span>ERC / DRC errors, both boards</span></div>
+      <div><b>97,146</b><span>firmware host-test checks passing</span></div>
+    </div>
+    <p><strong>Architecture.</strong> A tracking buck converter only supplies voltage, holding the LED anode about 1 V above what the current sinks need. Four parallel linear sinks set the current, with 0.1, 1, 10 and 100 Ω shunts so each covers one decade at the same 14–140 mV sense voltage, making every range equally precise. An STM32G431 runs fades at 4 kHz and raises the buck voltage before raising the current. A socketed ESP32-S3 on ESPHome handles Wi-Fi, a rotary encoder, and authenticated fixture-to-fixture sync over ESP-NOW.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Decision at the design gate</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Replace PWM on the bottom decade with a fourth DC range</td><td>Off-channel leakage and LED cathode capacitance make PWM no more accurate, while it adds camera banding</td></tr>
+        <tr><td>Synchronous buck locked at 400 kHz instead of pulse-skipping</td><td>At 140 µA the LED's dynamic resistance is about 4.6 kΩ, so 20 mV of ripple alone would cause about 0.9% flicker</td></tr>
+        <tr><td>MCU feed-forward on the buck voltage instead of a slow analog loop</td><td>A snap from 10% to full would starve the sink until a slow loop caught up, then overshoot</td></tr>
+        <tr><td>Prime the incoming channel and blend currents in the log domain</td><td>Time-domain simulation showed a plain crossfade dipping the light 17% on a 1 s fade; the fix brings the worst case to 1.5% (1 s) and 0.14% (10 s)</td></tr>
+        <tr><td>Make the dimming floor a firmware setting</td><td>States the assumed low-current LED behavior up front, so a wrong assumption is a setting change, not a board respin</td></tr>
+        <tr><td>Socket a ready-made ESP32-S3 board instead of a bare module</td><td>Removes 17 parts and a 0.5 mm-pitch USB-C connector, and makes the controller a ten-second swap</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Verified so far.</strong> Every design value comes from a script that asserts the limits (loop phase margins, buck on-times, voltage ceiling). An independent review caught board-revision-level errors before ordering, including a buck-enable pin that the STM32's bootloader drives high, which would have started the converter during reflashing.</p>
+    <p><strong>Status.</strong> Fabrication, bring-up and flicker measurement have not started, so all figures above are design or simulated values.</p>
+    <div class="links"><a href="https://github.com/ruckusmattster/xtm-led-driver">Repository</a><a href="https://github.com/ruckusmattster/xtm-led-driver/blob/main/docs/DESIGN_PROCESS.md">Design process</a></div>
+  </article>
+
+  <article class="project">
+    <h3>Handheld Fresnel-lens spotlight</h3>
+    <span class="tag win">1st place · Machine Made · 13th Old Lumens (2025)</span>
+    <p>A 1.6 million candela, roughly 2,000 lm handheld spotlight with a laser-cut MDF body generated from a fully parametric Onshape model. Designed and built in December 2025, alongside finals.</p>
+    <div class="pair">
+      <img src="img/spot-beam.jpg" alt="Beam into a hazy night sky" loading="lazy">
+      <img src="img/spot-lit.jpg" alt="Finished spotlight switched on" loading="lazy">
+    </div>
+    <div class="tablewrap"><table>
+      <tbody>
+        <tr><td>Peak intensity</td><td>1.6 Mcd (≈2.5 km ANSI FL1 throw)</td></tr>
+        <tr><td>Output</td><td>≈2,000 lm</td></tr>
+        <tr><td>LED</td><td>Luminus SFT-42R, 6500 K, on a copper-core board</td></tr>
+        <tr><td>Optic</td><td>200 mm Fresnel lens, 70 mm focal length</td></tr>
+        <tr><td>Drive</td><td>8.5 A constant-current buck (≈60% of the LED's maximum)</td></tr>
+        <tr><td>Battery</td><td>3S1P Samsung 50E 21700; calculated runtime 3 h</td></tr>
+        <tr><td>Protection</td><td>Arduino Nano monitoring each cell (3.00–4.25 V), switching the pack through an automotive relay</td></tr>
+        <tr><td>Body</td><td>1/4" MDF cut on a 150 W CO₂ laser; tower CPU cooler as heatsink</td></tr>
+      </tbody>
+    </table></div>
+    <ul class="points">
+      <li><strong>Lens choice by geometry.</strong> At 70 mm the LED's emission cone just fills the 200 mm lens: longer would spill light past the edge, shorter would leave the outer lens unused.</li>
+      <li><strong>Focus is millimeter-critical.</strong> A 1.6 mm error visibly converges then diverges the beam, so the LED and lens sit in laser-cut centering rings and focus is set with spacers.</li>
+      <li><strong>Parametric CAD.</strong> Lens diameter, focal length, material and PCB thickness all drive the model, so it scales to other lenses. A laser-cut jig marked the heatsink holes.</li>
+      <li><strong>Power path.</strong> With every cell in range and the button pressed, the Nano switches a MOSFET that energizes the relay coil (with flyback diode). I substituted one relay for the two MOSFETs in the reference schematic.</li>
+      <li><strong>What I'd change.</strong> I missed the buck module's 8.5 A limit at selection, capping output at ~60%. The wooden LED mount causes beam artifacts that sheet metal would avoid.</li>
+    </ul>
+    <p style="font-size:14px;color:var(--muted)">A friend on the Badger Solar Racing team guided the battery-protection design and donated the cells and relay; the protection firmware was drafted with ChatGPT and reviewed by both of us.</p>
+    <div class="links">
+      <a href="https://github.com/ruckusmattster/laser_cut_spotlight">Code</a>
+      <a href="https://budgetlightforum.com/t/ruckusmattsters-13th-old-lumens-entry-machine-made/231315">Build thread</a>
+      <a href="https://cad.onshape.com/documents/a23385b9adb766b754b1b610/w/0b6a776e412e99eb4f12a709/e/05142f55964d5ccf33e2bbdd">Onshape CAD</a>
+    </div>
+  </article>
+
+  <article class="project">
+    <h3>Mercury short-arc searchlight</h3>
+    <span class="tag win">1st place · Hand Made · 12th Old Lumens (2024)</span>
+    <p>A portable searchlight built around a 250 W UHP projector lamp salvaged with its ballast from a second-hand projector, measured at roughly 9.2 million candela and 17,000 lumens (about 6 km ANSI FL1 range). Won first choice of prizes across all three categories.</p>
+    <figure><img src="https://github.com/user-attachments/assets/83128763-b452-4ece-a6e6-d3d4bb5ce98b" alt="Searchlight beam on a building 1.2 km away" loading="lazy" onerror="this.closest('figure').remove()">
+      <figcaption>An apartment building lit from 1.2 km away.</figcaption></figure>
+    <ul class="points">
+      <li>Built a 340 V DC supply from 240 V AC (bridge rectifier, 470 µF/400 V capacitor, bleeder resistor) after finding nothing affordable off the shelf</li>
+      <li>Reverse-engineered the projector ballast's UART-controlled start-up and safety checks so it runs standalone</li>
+      <li>Characterized the beam with a lux meter: measured a 2° divergence from the parabolic reflector and computed intensity and throw</li>
+      <li>Packaged in a briefcase with a 600 W pure-sine power station for the contest's mobile requirement</li>
+    </ul>
+    <div class="links"><a href="https://github.com/ruckusmattster/searchlight">Write-up</a></div>
+  </article>
+</section>
+
+<section id="imaging">
+  <h2 class="kicker">Imaging &amp; 3D capture</h2>
+  <article class="project">
+    <h3>3D Gaussian splatting pipeline</h3>
+    <span class="tag">LichtFeld Studio</span><span class="tag">CUDA</span><span class="tag">RealityScan</span>
+    <p>A local, open-source pipeline that turns DSLR photo sets into 3D scenes you can fly through. The first full result is a scan of my freshman dorm room, viewable in the browser on SuperSplat.</p>
+    <ul class="points">
+      <li><strong>Capture:</strong> about 700 photos on a Canon 5D Mark IV over roughly 90 minutes, one deliberate frame per position for maximum sharpness.</li>
+      <li><strong>Pipeline:</strong> camera poses solved in RealityScan (COLMAP/GLOMAP as the open-source alternative), then trained in LichtFeld Studio, which I build from source on Windows with MSVC, vcpkg and CUDA, resolving cuDNN DLL placement, shell-environment and clang-cl/Vulkan dependency failures. Cut reconstruction time 3×.</li>
+      <li><strong>Diagnosing artifacts:</strong> floating "shards" came from regions seen by too few views; a blown-out window from a fixed exposure past the sensor's range; the mirror became a doorway into a false room. Fixes: more angles, controlled lighting, and an outlier-removal and densification plugin.</li>
+      <li><strong>Next:</strong> MoGe-2 monocular depth and normal maps in preprocessing for depth-supervised training.</li>
+    </ul>
+  </article>
+</section>
+
+<section id="more">
+  <h2 class="kicker">Embedded, software &amp; measurement</h2>
+  <div class="small-grid">
+    <div><h4>MattGPT</h4><p>A 7.5M-parameter character-level GPT built from scratch in PyTorch and trained on ~74k of my own Discord messages. Validation loss 1.44 nats/char; live demo on Hugging Face.</p>
+      <div class="links"><a href="https://github.com/ruckusmattster/matt-gpt">Repo</a><a href="https://huggingface.co/spaces/mattyhew/mattgpt">Demo</a></div></div>
+    <div><h4>Recycled filament pultrusion rig</h4><p>Produced 250 g of 1.75 mm filament within ±0.1 mm from recycled PET bottles through a 140 °C PID-controlled die, with stepper-held pull speed. Earned an Arkwright Engineering Scholarship.</p></div>
+    <div><h4>Photometric measurement workflow</h4><p>Computes candela and lumens from lux-meter readings; characterized a B35AM flashlight across all modes and calculated ANSI FL1 throw.</p><span class="mono">Excel · Bosch GLM 20 rangefinder</span></div>
+    <div><h4>Keychain now-playing display</h4><p>Shows the currently playing Spotify track on a keychain-sized screen over BLE from an Android companion app.</p><span class="mono">ESP32-S3 AMOLED · Onshape · resin</span></div>
+    <div><h4>Colour-based photo cropper</h4><p>Finds and crops regions of a target colour in photos.</p><span class="mono">Python · adaptive HSV · blob selection</span></div>
+  </div>
+</section>
+
+<section id="recognition">
+  <h2 class="kicker">Recognition &amp; skills</h2>
+  <ul class="points awards">
+    <li><strong>1st place, Machine Made</strong> — 13th annual Old Lumens contest (2025), Fresnel-lens spotlight</li>
+    <li><strong>1st place, Hand Made</strong> — 12th annual Old Lumens contest (2024), mercury short-arc searchlight; first choice of prizes across all three categories</li>
+    <li><strong>Arkwright Engineering Scholarship</strong> (UK national award)</li>
+    <li>Designs shipping in the official VzBoT 3D printer kit</li>
+  </ul>
+  <div class="tablewrap"><table>
+    <tbody>
+      <tr><td>Electronics</td><td>Constant-current LED drivers, buck converters, linear current sinks, ESP32 and ESPHome, STM32, Arduino, KiCad, PCBs for JLCPCB</td></tr>
+      <tr><td>Fabrication</td><td>Fine-pitch SMD, QFN and reflow soldering; laser cutting; resin and FDM printing; machine shop</td></tr>
+      <tr><td>CAD &amp; mechanical</td><td>Onshape parametric modeling, SolidWorks, thermal and liquid-cooling design, optics integration</td></tr>
+      <tr><td>Software &amp; data</td><td>C, C++, Python, CUDA, MATLAB, Java, LC-3 assembly, Excel modeling</td></tr>
+      <tr><td>Imaging</td><td>Gaussian splatting, photogrammetry (RealityScan, COLMAP/GLOMAP), DSLR photography</td></tr>
+    </tbody>
+  </table></div>
+  <p style="color:var(--muted);font-size:14px">Experience: Student Technician, Grainger Engineering Design Innovation Lab (2025–); Engineering work experience, McLaren Racing (2024).</p>
+</section>
+
+</main>
+
+<footer><div class="wrap">Matthew Weinberger · <a href="https://github.com/ruckusmattster">github.com/ruckusmattster</a></div></footer>
+</body>
+</html>
